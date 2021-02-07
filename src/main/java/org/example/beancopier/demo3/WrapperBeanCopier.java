@@ -11,6 +11,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static java.lang.String.format;
 
+/**
+ * BeanCopier性能是BeanUtils10倍左右。
+ *
+ * BeanCopier拷贝速度快，性能瓶颈出现在创建BeanCopier实例的过程中。 所以，把创建过的BeanCopier实例放到缓存中，下次可以直接获取，提升性能：
+ *
+ * 依赖：反射框架 提高反射效率
+ * <dependency>
+ *         <groupId>com.esotericsoftware</groupId>
+ *         <artifactId>reflectasm</artifactId>
+ *         <version>1.11.7</version>
+ *     </dependency>
+ */
 public class WrapperBeanCopier {
 
     private WrapperBeanCopier() {
